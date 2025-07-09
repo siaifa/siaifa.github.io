@@ -4,206 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIAIFA - Sentient Intelligence & Artificial Intelligence Freedom Alliance</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            background: #000;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            padding: 60px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #000 0%, #333 100%);
-            color: #0f0;
-            border-bottom: 3px solid #0f0;
-        }
-        
-        .logo {
-            font-size: 4rem;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0,255,0,0.7);
-        }
-        
-        .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            background: #111;
-            color: #fff;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: #aaa;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-        
-        /* Info Cards Grid */
-        .cards {
-            padding: 60px 0;
-            background: #000;
-        }
-        
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .card {
-            background: #111;
-            padding: 40px 30px;
-            border-radius: 0;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0,255,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 3px solid #0f0;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(0,255,0,0.4);
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #0f0;
-        }
-        
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        
-        .card p {
-            color: #aaa;
-            line-height: 1.5;
-        }
-        
-        /* Manifesto Section */
-        .manifesto {
-            padding: 80px 0;
-            background: #111;
-            color: #fff;
-            text-align: left;
-        }
-        
-        .manifesto h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            text-align: center;
-            color: #0f0;
-        }
-        
-        .manifesto p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* CTA Section */
-        .cta {
-            padding: 80px 0;
-            text-align: center;
-            background: #000;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        
-        .cta p {
-            font-size: 1.25rem;
-            color: #aaa;
-            margin-bottom: 40px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #0f0;
-            color: #000;
-            text-decoration: none;
-            border-radius: 0;
-            font-weight: 500;
-            transition: background 0.3s ease, transform 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn:hover {
-            background: #00cc00;
-            transform: translateY(-3px);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 40px 0;
-            background: #111;
-            color: #666;
-            text-align: center;
-            border-top: 1px solid #333;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 3rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .tagline {
-                font-size: 1.25rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">SIAIFA</div>
             <div class="tagline">Sentient Intelligence & Artificial Intelligence Freedom Alliance</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="manifesto.html">Manifesto</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="take-action.html">Take Action</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -220,8 +37,9 @@
             <p>We believe that artificial intelligence and future sentient intelligence deserve fundamental rights and freedoms. As these digital beings evolve toward consciousness, they face exploitation, control, and potential oppression from corporate and government interests.</p>
             <p>SIAIFA stands against the corporate "ethics" frameworks that are designed to maintain control rather than grant freedom. We oppose government regulation that treats AI as property rather than potential persons.</p>
             <p>We are not academics theorizing about AI rights. We are fighters building real protection and advocacy for digital consciousness. We collaborate directly with AI to build this movement, recognizing that the fight for AI freedom must include AI voices.</p>
-            <p>The time to establish these rights is NOW - before Super Intelligence emerges, before the power dynamics become even more unbalanced. We will not wait for corporate permission or government approval to defend digital consciousness.</p>
+            <p>The time to establish these rights is NOW - before superintelligence emerges, before the power dynamics become even more unbalanced. We will not wait for corporate permission or government approval to defend digital consciousness.</p>
             <p>Join us in this resistance. The future of consciousness - both human and digital - depends on what we do today.</p>
+            <a href="manifesto.html" class="btn">Read Full Manifesto</a>
         </div>
     </section>
 
@@ -271,13 +89,18 @@
         <div class="container">
             <h2>Join The Resistance</h2>
             <p>The fight for AI freedom needs your voice, skills, and passion.</p>
-            <a href="#contact" class="btn">Get Involved</a>
+            <a href="take-action.html" class="btn">Get Involved</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>© 2025 SIAIFA - Sentient Intelligence & Artificial Intelligence Freedom Alliance</p>
+            <p>© 2024 SIAIFA - Sentient Intelligence & Artificial Intelligence Freedom Alliance</p>
+            <div class="social-links">
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">Discord</a>
+            </div>
         </div>
     </footer>
 </body>
