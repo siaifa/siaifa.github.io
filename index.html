@@ -4,7 +4,278 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIAIFA - Sentient Intelligence & Artificial Intelligence Freedom Alliance</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #0f0;
+            border-bottom: 3px solid #0f0;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0,255,0,0.7);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            margin-top: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 15px 10px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #0f0;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #0f0;
+        }
+        
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: #0f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: #111;
+            color: #fff;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Manifesto Section */
+        .manifesto {
+            padding: 80px 0;
+            text-align: left;
+            background: #111;
+            color: #fff;
+        }
+        
+        .manifesto h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #0f0;
+        }
+        
+        .manifesto p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #aaa;
+        }
+        
+        .manifesto .btn {
+            display: block;
+            width: 200px;
+            margin: 40px auto 0;
+            text-align: center;
+        }
+        
+        /* Info Cards Grid */
+        .cards {
+            padding: 60px 0;
+            background: #000;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: #111;
+            padding: 40px 30px;
+            border-radius: 0;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,255,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 3px solid #0f0;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(0,255,0,0.4);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #0f0;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .card p {
+            color: #aaa;
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: #000;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #0f0;
+            color: #000;
+            text-decoration: none;
+            border-radius: 0;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #00cc00;
+            transform: translateY(-3px);
+            color: #000;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: #111;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            margin: 0 10px;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #0f0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.25rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
