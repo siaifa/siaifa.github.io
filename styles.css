@@ -1,3 +1,5 @@
+Complete styles.css File
+
 /* Base Styles */
 * {
     margin: 0;
@@ -90,6 +92,28 @@ nav ul li a.active {
     color: #0f0;
 }
 
+/* Hero Section */
+.hero {
+    padding: 80px 0;
+    text-align: center;
+    background: #111;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
 /* Page Header */
 .page-header {
     padding: 60px 0;
@@ -136,7 +160,73 @@ nav ul li a.active {
     margin-bottom: 10px;
 }
 
-/* Manifesto Specific */
+/* Info Cards Grid */
+.cards {
+    padding: 60px 0;
+    background: #000;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    background: #111;
+    padding: 40px 30px;
+    border-radius: 0;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,255,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 3px solid #0f0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0,255,0,0.4);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #0f0;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card p {
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* Manifesto Section */
+.manifesto {
+    padding: 80px 0;
+    background: #111;
+    color: #fff;
+}
+
+.manifesto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #0f0;
+}
+
+.manifesto p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .manifesto-content {
     max-width: 800px;
     margin: 0 auto;
@@ -159,6 +249,46 @@ nav ul li a.active {
     margin-top: 50px;
     text-align: right;
     font-style: italic;
+}
+
+/* CTA Section */
+.cta {
+    padding: 80px 0;
+    text-align: center;
+    background: #000;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.cta p {
+    font-size: 1.25rem;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #0f0;
+    color: #000;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: 500;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #00cc00;
+    transform: translateY(-3px);
+    color: #000;
 }
 
 /* Contact Page */
@@ -201,61 +331,6 @@ nav ul li a.active {
 .form-group textarea:focus {
     outline: none;
     border-color: #0f0;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background: #0f0;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn:hover {
-    background: #00cc00;
-    transform: translateY(-3px);
-}
-
-/* Footer */
-footer {
-    padding: 40px 0;
-    background: #111;
-    color: #666;
-    text-align: center;
-    border-top: 1px solid #333;
-}
-
-.social-links {
-    margin-top: 20px;
-}
-
-.social-links a {
-    margin: 0 10px;
-    color: #666;
-}
-
-.social-links a:hover {
-    color: #0f0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .logo {
-        font-size: 2.5rem;
-    }
-    
-    .page-header h1 {
-        font-size: 2rem;
-    }
-    
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Resources Page */
@@ -346,8 +421,43 @@ footer {
     font-weight: bold;
 }
 
-/* Updated Navigation for Mobile */
+/* Footer */
+footer {
+    padding: 40px 0;
+    background: #111;
+    color: #666;
+    text-align: center;
+    border-top: 1px solid #333;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: #666;
+}
+
+.social-links a:hover {
+    color: #0f0;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .hero h1, 
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .tagline {
+        font-size: 1.25rem;
+    }
+    
     nav ul {
         flex-direction: column;
     }
@@ -357,7 +467,17 @@ footer {
         margin-bottom: 10px;
     }
     
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .action-grid {
         grid-template-columns: 1fr;
     }
 }
+
+
+This is the complete standalone styles.css file that includes all the styling for every page we've created. It maintains the punk aesthetic with the black background, neon green accents, and sharp edges throughout the site.
+
+
+Just save this as "styles.css" in the same directory as your HTML files, and all the pages should reference it correctly.
