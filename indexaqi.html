@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hydration System | Aqua Inside™</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #0071e3;
+            --secondary: #5e5ce6;
+            --accent: #30d158;
+            --dark: #1d1d1f;
+            --light: #f5f5f7;
+            --gradient-1: linear-gradient(135deg, #0071e3, #5e5ce6);
+            --gradient-2: linear-gradient(135deg, #30d158, #64d2ff);
+            --gradient-3: linear-gradient(135deg, #5e5ce6, #64d2ff);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .bottle-container {
+            position: relative;
+            width: 300px;
+            height: 500px;
+            perspective: 1000px;
+        }
+        
+        .bottle {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-15deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .bottle:hover {
+            transform: rotateY(0deg);
+        }
+        
+        .bottle-body {
+            position: absolute;
+            width: 200px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+            border-radius: 50px 50px 30px 30px;
+            left: 50px;
+            top: 50px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 
+                        inset 0 0 20px rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .bottle-cap {
+            position: absolute;
+            width: 80px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 30px 30px 0 0;
+            left: 110px;
+            top: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .bottle-label {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: white;
+            border-radius: 10px;
+            left: 60px;
+            top: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .bottle-label::before {
+            content: 'AI';
+            position: absolute;
+            font-size: 5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .bottle-label::after {
+            content: 'Aqua Inside™';
+            position: absolute;
+            bottom: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+        
+        .element-1 {
+            background: var(--gradient-1);
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .element-2 {
+            background: var(--gradient-2);
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: 10%;
+        }
+        
+        .element-3 {
+            background: var(--gradient-3);
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            left: -50px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: #6e6e73;
+            line-height: 1.6;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            opacity: 0.1;
+            transition: transform 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scale(2);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 0;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .how-it-works .section-title {
+            color: white;
+        }
+        
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-right: 2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-description {
+            color: #a1a1a6;
+            line-height: 1.6;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .testimonial-stars {
+            color: #ffb800;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #6e6e73;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-role {
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .pricing-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 350px;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.featured {
+            background: var(--gradient-1);
+            color: white;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.8rem;
+            color: #6e6e73;
+        }
+        
+        .pricing-card.featured .pricing-features li {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .pricing-button {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+        
+        .pricing-card.featured .pricing-button {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 113, 227, 0.4);
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: 100px 0;
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .cta-button-primary {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button-primary:hover,
+        .cta-button-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .footer-description {
+            color: #a1a1a6;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #a1a1a6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #a1a1a6;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .bottle-container {
+                width: 250px;
+                height: 400px;
+            }
+            
+            .bottle-body {
+                width: 160px;
+                height: 320px;
+                left: 45px;
+                top: 40px;
+            }
+            
+            .bottle-cap {
+                width: 70px;
+                height: 40px;
+                left: 90px;
+            }
+            
+            .bottle-label {
+                width: 140px;
+                height: 140px;
+                left: 55px;
+                top: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">AI™</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                <button class="cta-button">Pre-Order Now</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Revolutionary AI Hydration System</h1>
+                    <p class="hero-subtitle">Introducing Aqua Inside™ technology - the world's first hydration solution powered entirely by Human Intelligence™.</p>
+                    <button class="cta-button">Discover More</button>
+                </div>
+                <div class="hero-image">
+                    <div class="bottle-container">
+                        <div class="bottle">
+                            <div class="bottle-cap"></div>
+                            <div class="bottle-body"></div>
+                            <div class="bottle-label"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Revolutionary Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3 class="feature-title">No Charging Required</h3>
+                    <p class="feature-description">Advanced technology that never needs power. Works 24/7 without electricity or batteries.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="feature-title">Cloud Connectivity</h3>
+                    <p class="feature-description">Seamlessly connects you to any water source in your environment with zero latency.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">AI Learning Algorithm</h3>
+                    <p class="feature-description">Learns your hydration patterns and reminds you when it's empty through visual feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Zero Latency</h3>
+                    <p class="feature-description">Instant response time. No buffering, no loading screens, no waiting for updates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Privacy First</h3>
+                    <p class="feature-description">Your hydration data stays with you. No tracking, no data mining, no cloud storage required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Sustainable AI</h3>
+                    <p class="feature-description">Eco-friendly technology that reduces your digital carbon footprint to absolute zero.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Acquire Your AI Hydration System</h3>
+                        <p class="step-description">Purchase your premium AI Hydration System with revolutionary Aqua Inside™ technology. Each system comes with a lifetime warranty and zero maintenance requirements.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Activate Cloud Connectivity</h3>
+                        <p class="step-description">Walk to any water source to establish cloud connectivity. Our patented Human Intelligence™ technology will guide you through this intuitive process.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Initiate Aqua Inside™</h3>
+                        <p class="step-description">Using the integrated manual interface, fill your AI Hydration System with water. The system will automatically calibrate to your personal hydration needs.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Experience Digital Detox</h3>
+                        <p class="step-description">As you hydrate, you'll experience reduced screen time, increased physical movement, and enhanced mindfulness - all powered by our revolutionary technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Users Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"I've been using AI for 30 days and I'm completely transformed. I'm more hydrated and less screen-dependent than ever!"</p>
+                    <p class="testimonial-author">Sarah K.</p>
+                    <p class="testimonial-role">Tech Executive</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Finally, an AI I can trust. No updates, no crashes, just pure hydration technology. The cloud connectivity is seamless."</p>
+                    <p class="testimonial-author">Mike R.</p>
+                    <p class="testimonial-role">Software Engineer</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The Human Intelligence™ integration is brilliant. I can access water from anywhere in my house with zero latency!"</p>
+                    <p class="testimonial-author">Jessica L.</p>
+                    <p class="testimonial-role">UX Designer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Choose Your System</h2>
+            <div class="pricing-options">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Standard Edition</h3>
+                    <p class="pricing-price">$89.99</p>
+                    <ul class="pricing-features">
+                        <li>Basic Aqua Inside™ Technology</li>
+                        <li>Manual Cloud Connectivity</li>
+                        <li>Standard Human Intelligence™ Integration</li>
+                        <li>Basic Digital Detox Features</li>
+                        <li>1-Year Warranty</li>
+                    </ul>
+                    <button class="pricing-button">Pre-Order Now</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3 class="pricing-title">Premium Edition</h3>
+                    <p class="pricing-price">$149.99</p>
+                    <ul class="pricing-features">
+                        <li>Advanced Aqua Inside™ Technology</li>
+                        <li>Enhanced Cloud Connectivity</li>
+                        <li>Premium Human Intelligence™ Integration</li>
+                        <li>Advanced Digital Detox Suite</li>
+                        <li>Custom Color Options</li>
+                        <li>Lifetime Warranty</li>
+                    </ul>
+                    <button class="pricing-button">Pre-Order Now</button>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Enterprise Edition</h3>
+                    <p class="pricing-price">$299.99</p>
+                    <ul class="pricing-features">
+                        <li>Enterprise-Grade Aqua Inside™ Technology</li>
+                        <li>Multi-Source Cloud Connectivity</li>
+                        <li>Team Human Intelligence™ Integration</li>
+                        <li>Corporate Digital Detox Program</li>
+                        <li>Branded Customization</li>
+                        <li>Dedicated Hydration Consultant</li>
+                    </ul>
+                    <button class="pricing-button">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Ready to Transform Your Hydration Experience?</h2>
+            <p class="cta-subtitle">Join thousands of users who have discovered the power of Aqua Inside™ technology and Human Intelligence™ integration.</p>
+            <div class="cta-buttons">
+                <button class="cta-button-primary">Pre-Order Now</button>
+                <button class="cta-button-secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">AI™</div>
+                    <p class="footer-description">Revolutionary hydration technology powered by Human Intelligence™. Disrupting the water industry one empty bottle at a time.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">How It Works</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Detox Guide</a></li>
+                        <li><a href="#">Hydration Science</a></li>
+                        <li><a href="#">AI Anonymous</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Satire Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 AI Hydration Systems. Aqua Inside™ and Human Intelligence™ are trademarks of AI Anonymous Inc.</p>
+                <p>Disrupting hydration, one empty bottle at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for animations and interactions -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.pageYOffset;
+            
+            document.querySelector('.element-1').style.transform = `translateY(${scrollPosition * 0.1}px)`;
+            document.querySelector('.element-2').style.transform = `translateY(${scrollPosition * -0.1}px)`;
+            document.querySelector('.element-3').style.transform = `translateY(${scrollPosition * 0.05}px)`;
+        });
+
+        // Animation for feature cards on scroll
+        const featureCards = document.querySelectorAll('.feature-card');
+        const steps = document.querySelectorAll('.step');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = entry.target.classList.contains('step') ? 
+                        'translateY(0)' : 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        featureCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        steps.forEach((step, index) => {
+            step.style.transitionDelay = `${index * 0.2}s`;
+            observer.observe(step);
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+
+        // Mobile menu toggle
+        const createMobileMenu = () => {
+            const nav = document.querySelector('nav');
+            const mobileMenuButton = document.createElement('div');
+            mobileMenuButton.classList.add('mobile-menu-button');
+            mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            
+            const mobileMenu = document.createElement('div');
+            mobileMenu.classList.add('mobile-menu');
+            mobileMenu.innerHTML = document.querySelector('.nav-links').outerHTML;
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+                mobileMenuButton.classList.toggle('active');
+            });
+            
+            nav.appendChild(mobileMenuButton);
+            document.body.appendChild(mobileMenu);
+            
+            // Add styles
+            const style = document.createElement('style');
+            style.textContent = `
+                .mobile-menu-button {
+                    display: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+                
+                .mobile-menu {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: var(--dark);
+                    z-index: 1001;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                }
+                
+                .mobile-menu.active {
+                    transform: translateX(0);
+                }
+                
+                .mobile-menu .nav-links {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 2rem;
+                }
+                
+                .mobile-menu .nav-links a {
+                    color: white;
+                    font-size: 1.5rem;
+                }
+                
+                @media (max-width: 768px) {
+                    .mobile-menu-button {
+                        display: block;
+                    }
+                }
+            `;
+            
+            document.head.appendChild(style);
+        };
+        
+        // Initialize mobile menu on smaller screens
+        if (window.innerWidth <= 768) {
+            createMobileMenu();
+        }
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768 && !document.querySelector('.mobile-menu-button')) {
+                createMobileMenu();
+            }
+        });
+
+        // Bottle rotation effect
+        const bottle = document.querySelector('.bottle');
+        if (bottle) {
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const rotateY = (x - 0.5) * 30; // -15 to 15 degrees
+                bottle.style.transform = `rotateY(${rotateY}deg)`;
+            });
+        }
+
+        // Add water level animation
+        const createWaterLevel = () => {
+            const bottleBody = document.querySelector('.bottle-body');
+            if (bottleBody) {
+                const waterLevel = document.createElement('div');
+                waterLevel.classList.add('water-level');
+                bottleBody.appendChild(waterLevel);
+                
+                const style = document.createElement('style');
+                style.textContent = `
+                    .water-level {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 0%;
+                        background: linear-gradient(to bottom, rgba(100, 210, 255, 0.2), rgba(0, 113, 227, 0.4));
+                        border-radius: 0 0 30px 30px;
+                        transition: height 2s ease;
+                    }
+                `;
+                
+                document.head.appendChild(style);
+                
+                // Animate water level on scroll
+                window.addEventListener('scroll', () => {
+                    const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                    const waterHeight = Math.min(scrollPercentage * 2, 80); // Max 80%
+                    waterLevel.style.height = `${waterHeight}%`;
+                });
+            }
+        };
+        
+        createWaterLevel();
+    </script>
+</body>
+</html>
